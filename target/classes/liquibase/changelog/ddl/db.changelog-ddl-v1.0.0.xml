@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd"
+	logicalFilePath="db.changelog-ddl-v1.0.0.xml">
+
+	<changeSet author="carles.saumell (generated)" id="1">
+		<createTable tableName="DOCUMENT_TYPE">
+			<column name="id" type="${ID_TYPE}">
+				<constraints primaryKey="true"
+					primaryKeyName="PK__DOCUMENT_TYPE" />
+			</column>
+			<column name="name" type="${NAME_TYPE}" />
+			<column name="is_active" type="tinyint(1)">
+				<constraints nullable="false" />
+			</column>
+			<column name="created_date" type="${AUDITABLE_DATE_TYPE}" />
+			<column name="created_by" type="${AUDITABLE_USER_TYPE}" />
+			<column name="modified_date" type="${AUDITABLE_DATE_TYPE}" />
+			<column name="modified_by" type="${AUDITABLE_USER_TYPE}" />
+		</createTable>
+	</changeSet>
+
+	<changeSet author="carles.saumell (generated)" id="2">
+		<createTable tableName="USER">
+			<column name="id" type="${ID_TYPE}">
+				<constraints primaryKey="true" primaryKeyName="PK__USER" />
+			</column>
+			<column name="name" type="VARCHAR(50)" />
+			<column name="surname" type="${SURNAME_TYPE}" />
+			<column name="document_type_id" type="${ID_TYPE}" />
+			<column name="document_number" type="${DOCUMENT_NUMBER_TYPE}" />
+			<column name="is_active" type="tinyint(1)">
+				<constraints nullable="false" />
+			</column>
+			<column name="created_date" type="${AUDITABLE_DATE_TYPE}" />
+			<column name="created_by" type="${AUDITABLE_USER_TYPE}" />
+			<column name="modified_date" type="${AUDITABLE_DATE_TYPE}" />
+			<column name="modified_by" type="${AUDITABLE_USER_TYPE}" />
+		</createTable>
+
+		<addForeignKeyConstraint
+			baseColumnNames="document_type_id" baseTableName="USER"
+			constraintName="fk__user_document_type" referencedColumnNames="id"
+			referencedTableName="DOCUMENT_TYPE" />
+	</changeSet>
+
+	<changeSet author="carles.saumell (generated)" id="3">
+		<createTable tableName="WALLET">
+			<column name="id" type="${ID_TYPE}">
+				<constraints primaryKey="true"
+					primaryKeyName="PK__WALLET" />
+			</column>
+			<column name="code" type="${CODE_TYPE}">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="${NAME_TYPE}" />
+			<column name="description" type="${DESCRIPTION_TYPE}" />
+			<column name="coins" type="${COIN_TYPE}" />
+			<column name="user_id" type="${ID_TYPE}">
+				<constraints nullable="false" />
+			</column>
+			<column name="is_active" type="tinyint(1)">
+				<constraints nullable="false" />
+			</column>
+			<column name="created_date" type="${AUDITABLE_DATE_TYPE}" />
+			<column name="created_by" type="${AUDITABLE_USER_TYPE}" />
+			<column name="modified_date" type="${AUDITABLE_DATE_TYPE}" />
+			<column name="modified_by" type="${AUDITABLE_USER_TYPE}" />
+		</createTable>
+
+		<addUniqueConstraint columnNames="id, code"
+			constraintName="const_id_code" tableName="WALLET" />
+
+		<addForeignKeyConstraint
+			baseColumnNames="user_id" baseTableName="WALLET"
+			constraintName="fk_wallet_user" referencedColumnNames="id"
+			referencedTableName="USER" />
+	</changeSet>
+
+	<changeSet author="carles.saumell (generated)" id="4">
+		<createTable tableName="TRANSACTION">
+		<column name="id" type="${ID_TYPE}" autoIncrement="true">
+				<constraints primaryKey="true"
+					primaryKeyName="PK__TRANSACTION" />
+			</column>
+			<column name="origin_wallet_id" type="${ID_TYPE}">
+				<constraints nullable="false" />
+			</column>
+			<column name="destiny_wallet_id" type="${ID_TYPE}">
+				<constraints nullable="false" />
+			</column>
+			<column name="coins" type="${COIN_TYPE}">
+				<constraints nullable="false" />
+			</column>
+			<column name="is_active" type="tinyint(1)">
+				<constraints nullable="false" />
+			</column>
+			<column name="created_date" type="${AUDITABLE_DATE_TYPE}" />
+			<column name="created_by" type="${AUDITABLE_USER_TYPE}" />
+			<column name="modified_date" type="${AUDITABLE_DATE_TYPE}" />
+			<column name="modified_by" type="${AUDITABLE_USER_TYPE}" />
+		</createTable>
+		
+		<addForeignKeyConstraint
+			baseColumnNames="origin_wallet_id" baseTableName="TRANSACTION"
+			constraintName="fk_origin_wallet_user" referencedColumnNames="id"
+			referencedTableName="WALLET" />
+
+		<addForeignKeyConstraint
+			baseColumnNames="destiny_wallet_id" baseTableName="TRANSACTION"
+			constraintName="fk_destiny_wallet_user" referencedColumnNames="id"
+			referencedTableName="WALLET" />
+	</changeSet>
+
+</databaseChangeLog>

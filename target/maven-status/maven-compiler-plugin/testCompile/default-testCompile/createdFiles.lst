@@ -1,0 +1,10 @@
+com\openpay\app\data\entity\TransactionTest.class
+com\openpay\app\data\entity\WalletTest.class
+com\openpay\app\service\WalletServiceImplTest.class
+com\openpay\app\controller\TransactionControllerTest.class
+com\openpay\app\controller\UserControllerTest.class
+com\openpay\app\service\TransactionImplTest.class
+com\openpay\app\data\entity\UserTest.class
+com\openpay\app\service\UserServiceImplTest.class
+com\openpay\app\controller\WalletControllerTest.class
+com\openpay\app\OpenPayApplicationTests.class

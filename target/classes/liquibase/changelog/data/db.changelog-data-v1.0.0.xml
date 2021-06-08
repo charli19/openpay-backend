@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet author="carles.saumell (generated)" id="1">
+		<insert tableName="DOCUMENT_TYPE">
+			<column name="id" valueNumeric="1" />
+			<column name="name" value="NIF" />
+			<column name="created_by" value="Admin" />
+			<column name="created_date" valueDate="current_timestamp" />
+			<column name="modified_by" value="Admin" />
+			<column name="modified_date" valueDate="current_timestamp" />
+			<column name="is_active" value="1" />
+		</insert>
+	</changeSet>
+
+	<changeSet author="carles.saumell (generated)" id="2">
+		<insert tableName="USER">
+			<column name="id" valueNumeric="1" />
+			<column name="name" value="Admin" />
+			<column name="created_by" value="SYSTEM" />
+			<column name="created_date" valueDate="current_timestamp" />
+			<column name="modified_by" value="SYSTEM" />
+			<column name="modified_date" valueDate="current_timestamp" />
+			<column name="is_active" value="1" />
+		</insert>
+
+		<insert tableName="USER">
+			<column name="id" valueNumeric="2" />
+			<column name="name" value="Carles" />
+			<column name="surname" value="Saumell" />
+			<column name="document_type_id" value="1" />
+			<column name="document_number" value="47637487W" />
+			<column name="created_by" value="Admin" />
+			<column name="created_date" valueDate="current_timestamp" />
+			<column name="modified_by" value="Admin" />
+			<column name="modified_date" valueDate="current_timestamp" />
+			<column name="is_active" value="1" />
+		</insert>
+
+		<insert tableName="USER">
+			<column name="id" valueNumeric="3" />
+			<column name="name" value="Daniel" />
+			<column name="surname" value="Grobas" />
+			<column name="document_type_id" value="1" />
+			<column name="document_number" value="17257780Y" />
+			<column name="created_by" value="Admin" />
+			<column name="created_date" valueDate="current_timestamp" />
+			<column name="modified_by" value="Admin" />
+			<column name="modified_date" valueDate="current_timestamp" />
+			<column name="is_active" value="1" />
+		</insert>
+
+		<insert tableName="USER">
+			<column name="id" valueNumeric="4" />
+			<column name="name" value="Pagantis" />
+			<column name="surname" value="Group" />
+			<column name="document_type_id" value="1" />
+			<column name="document_number" value="33517008M" />
+			<column name="created_by" value="Admin" />
+			<column name="created_date" valueDate="current_timestamp" />
+			<column name="modified_by" value="Admin" />
+			<column name="modified_date" valueDate="current_timestamp" />
+			<column name="is_active" value="1" />
+		</insert>
+	</changeSet>
+
+	<changeSet author="carles.saumell (generated)" id="5">
+		<insert tableName="WALLET">
+			<column name="id" valueNumeric="1" />
+			<column name="name" value="Personal" />
+			<column name="description" value="Cuenta de uso diario" />
+			<column name="coins" value="2000" />
+			<column name="user_id" value="2" />
+			<column name="code" value="c107cc428d943a3b7a0c7ef27a156ede9e1fd940" />
+			<column name="created_by" value="Admin" />
+			<column name="created_date" valueDate="current_timestamp" />
+			<column name="modified_by" value="Admin" />
+			<column name="modified_date" valueDate="current_timestamp" />
+			<column name="is_active" value="1" />
+		</insert>
+
+		<insert tableName="WALLET">
+			<column name="id" valueNumeric="2" />
+			<column name="name" value="Ahorros" />
+			<column name="description" value="Ahorros personales" />
+			<column name="coins" value="10000" />
+			<column name="user_id" value="2" />
+			<column name="code" value="17973b7d49015603ead844e26e8ee4ae99f34a15" />
+			<column name="created_by" value="Admin" />
+			<column name="created_date" valueDate="current_timestamp" />
+			<column name="modified_by" value="Admin" />
+			<column name="modified_date" valueDate="current_timestamp" />
+			<column name="is_active" value="1" />
+		</insert>
+
+		<insert tableName="WALLET">
+			<column name="id" valueNumeric="3" />
+			<column name="name" value="Trabajo" />
+			<column name="description" value="Ahorros del trabajo" />
+			<column name="coins" value="6000" />
+			<column name="user_id" value="3" />
+			<column name="code" value="2ef5e8bc0bab24f5d25a50f0a447433ba7fd1755" />
+			<column name="created_by" value="Admin" />
+			<column name="created_date" valueDate="current_timestamp" />
+			<column name="modified_by" value="Admin" />
+			<column name="modified_date" valueDate="current_timestamp" />
+			<column name="is_active" value="1" />
+		</insert>
+
+		<insert tableName="WALLET">
+			<column name="id" valueNumeric="4" />
+			<column name="name" value="Empresa" />
+			<column name="description" value="Ingresos empresariales" />
+			<column name="coins" value="150000" />
+			<column name="user_id" value="4" />
+			<column name="code" value="7bf140973ee4831b53f5de1e07f38cb82c2549f2" />
+			<column name="created_by" value="Admin" />
+			<column name="created_date" valueDate="current_timestamp" />
+			<column name="modified_by" value="Admin" />
+			<column name="modified_date" valueDate="current_timestamp" />
+			<column name="is_active" value="1" />
+		</insert>
+
+		<insert tableName="WALLET">
+			<column name="id" valueNumeric="5" />
+			<column name="name" value="Departamento Comercial" />
+			<column name="description"
+				value="Ingresos del departamento comercial" />
+			<column name="coins" value="50000" />
+			<column name="user_id" value="4" />
+			<column name="code" value="ff64e793d6fc7105a4e01409f8347803a6223152" />
+			<column name="created_by" value="Admin" />
+			<column name="created_date" valueDate="current_timestamp" />
+			<column name="modified_by" value="Admin" />
+			<column name="modified_date" valueDate="current_timestamp" />
+			<column name="is_active" value="1" />
+		</insert>
+	</changeSet>
+
+</databaseChangeLog>
